@@ -25,7 +25,9 @@
 
     function updateTime(){
       const ms = elapsed % 1000
-      const s = elapsed / 1000
+      const s = Math.floor(elapsed / 1000) % 60
+      const mininute = Math.floor(elapsed / 1000*60) % 60
+      const hour = Math.floor(elapsed / (1000*60*60))
     }
     
     //クリック時に関数を処理するようにイベントを追加
