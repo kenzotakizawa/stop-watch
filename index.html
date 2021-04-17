@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web万屋エンジニアチャンネル</title>
+</head>
+<body>
+  <div class="time">00:00:00.000</div>
+  <div>
+    <input id ="start" type="button" value="start">
+    <input id ="stop" type="button" value="stop">
+    <input id ="reset" type="button" value="reset">
+  </div>
+  <script>
+    const timeElement = document. getElementById('time')
+    const start = document. getElementById('start')
+    const stop = document. getElementById('stop')
+    const reset = document. getElementById('reset')
+    //経過時間のミリ秒
+    let elapsed = 0
+    
+    //クリック時に関数を処理するようにイベントを追加
+    start.addEventListener('click', function(e) {
+      //一個前の時間
+      let pre = new Date()
+      setInterval(function() {
+        //現在の時間
+        const now = new Date()
+        //現在の時刻から一個前の時間を引いたら何秒経ったかがわかる
+        elapsed += now - pre
+        console.log(elapsed)
+      }, 1000)
+    });
+  </script>
+</body>
+</html>
