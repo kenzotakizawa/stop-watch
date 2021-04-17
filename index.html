@@ -19,20 +19,36 @@
     const stop = document. getElementById('stop')
     const reset = document. getElementById('reset')
     //経過時間のミリ秒
-    let elapsed = 0
+    let elapsed = 0　
+    //時間を計測する関数(stop機能でも利用したいから)を代入
+    let intervalId= null
+
+    function updateTime(){
+      const ms = elapsed % 1000
+      const s = elapsed / 1000
+    }
     
     //クリック時に関数を処理するようにイベントを追加
     start.addEventListener('click', function(e) {
       //一個前の時間
       let pre = new Date()
-      setInterval(function() {
+      intervalId = setInterval(function() {
         //現在の時間
         const now = new Date()
-        //現在の時刻から一個前の時間を引いたら何秒経ったかがわかる
-        elapsed += now - pre
+        //現在の時刻から一個前の時間を引いた秒を足し続ける
+        elapsed += now - pre        
+        pre = now
         console.log(elapsed)
-      }, 1000)
+      }, 10)
     });
+
+    stop.addEventListener('click', function(e){
+      clearInterval(intervalId);
+    })
+
+    reset.addEventListener('click', function(e){
+      elapsed = 0
+    })
   </script>
 </body>
 </html>
